@@ -1,34 +1,37 @@
 import subprocess
 import os
 
-def gitInit(repoDir):
-    cmd = ['git', 'init']
-    p = subprocess.Popen(cmd, cwd = repoDir, stdout = subprocess.PIPE)
+def execute(cmd, wd):
+    p = subprocess.Popen(cmd, cwd = wd, stdout = subprocess.PIPE)
     output = p.communicate()[0]
     print(output)
     p.wait()
+
+def gitInit(repoDir):
+    cmd = ['git', 'init']
+    execute(cmd, repoDir)
 
 def gitAddAll(repoDir):
     cmd = ['git', 'add', '--all']
-    p = subprocess.Popen(cmd, cwd = repoDir, stdout = subprocess.PIPE)
-    output = p.communicate()[0]
-    print(output)
-    p.wait()
+    execute(cmd, repoDir)
 
 def gitCommit(repoDir, repoName):
     cmd = ['git', 'commit', '-am', repoName]
-    p = subprocess.Popen(cmd, cwd = repoDir, stdout = subprocess.PIPE)
-    output = p.communicate()[0]
-    print(output)
-    p.wait()
+    execute(cmd, repoDir)
 
 def main():
     wd = os.getcwd()
-    lst = [os.path.join(wd,o) for o in os.listdir(wd) if os.path.isdir(os.path.join(wd,o))]
+    dirpaths = [os.path.join(wd,o) for o in os.listdir(wd) if os.path.isdir(os.path.join(wd,o))]
     dirnames = [o for o in os.listdir(wd) if os.path.isdir(os.path.join(wd,o))]
-    for x in range (0, len(lst)):
-        gitInit(wd)
-        gitAddAll(wd)
-        gitCommit(wd, dirnames[x])
+
+    print("Found "+str(len(dirnames))+" directories in "+wd)
+
+    for x in range (0, len(dirpaths)):
+        print("- Initializing repo in "+dirnames[x]+"...")
+        gitInit(dirpaths[x])
+        print("- Staging all files in "+dirnames[x]+"...")
+        gitAddAll(dirpaths[x])
+        print("- Making a commit in "+dirnames[x]+"...")
+        gitCommit(dirpaths[x], dirnames[x])
 
 main()
