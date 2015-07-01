@@ -24,8 +24,11 @@ def gitCommit(repoDir, repoName):
 
 def main():
     wd = os.getcwd()
-    gitInit(wd)
-    gitAddAll(wd)
-    gitCommit(wd, "GitBatch")
+    lst = [os.path.join(wd,o) for o in os.listdir(wd) if os.path.isdir(os.path.join(wd,o))]
+    dirnames = [o for o in os.listdir(wd) if os.path.isdir(os.path.join(wd,o))]
+    for x in range (0, len(lst)):
+        gitInit(wd)
+        gitAddAll(wd)
+        gitCommit(wd, dirnames[x])
 
 main()
