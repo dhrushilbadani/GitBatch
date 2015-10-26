@@ -5,7 +5,7 @@ A program that automatically creates a GitHub repo for each subdirectory of the 
 
 1. [Passwordless GitHub login](https://help.github.com/articles/working-with-ssh-key-passphrases/) for your account set up on your terminal. 
 
-2. Personal access token from GitHub - generate one [here](https://github.com/settings/tokens) . (Permissions needed - gist, repo, user, write:repo_hook.)
+2. Personal access token from GitHub - generate one [here](https://github.com/settings/tokens) . (Permissions needed - ```public_repo```)
 
 
 
