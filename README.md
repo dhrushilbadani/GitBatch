@@ -3,15 +3,15 @@ A program that automatically creates a GitHub repo for each subdirectory of the 
 
 ##Requirements:
 
-1. Passwordless GitHub login. (https://help.github.com/articles/working-with-ssh-key-passphrases/)
+1. [Passwordless GitHub login](https://help.github.com/articles/working-with-ssh-key-passphrases/) set up on your terminal. 
 
-2. API token from GitHub - generate one at https://github.com/settings/tokens . (Permissions needed - gist, repo, user, write:repo_hook.)
+2. Personal access token from GitHub - generate one [here](https://github.com/settings/tokens) . (Permissions needed - gist, repo, user, write:repo_hook.)
 
 
 
 ##Usage:
 
-1. Download the .zip file from the pane on the right >> , and extract its contents.
+1. Download the .zip file from the pane on the right >> and extract its contents (Git folks can feel free to fork+pull too).
 
 2. Copy GitBatch.py to the folder containing your subfolders.
 
